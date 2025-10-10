@@ -1,4 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import type { NavigationMenuItem } from '@nuxt/ui'
+import { useLogo } from '@/composables/useLogo';
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -11,8 +14,8 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'Jaamaristam'
+const description = 'Portfolio by jaamaristam@gmail.com. Software Inginner.'
 
 useSeoMeta({
   title,
@@ -23,6 +26,24 @@ useSeoMeta({
   twitterImage: 'https://ui4.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
+
+const route = useRoute()
+
+const items = computed<NavigationMenuItem[]>(() => [{
+  label: 'Home',
+  to: '/',
+  active: route.path.toString() === '/'
+}, {
+  label: 'About',
+  to: '/about',
+  active: route.path.startsWith('/about')
+}, {
+  label: 'Proyects',
+  to: '/proyects',
+  active: route.path.startsWith('/proyects')
+}])
+
+const { logoUrl } = useLogo();
 </script>
 
 <template>
@@ -30,19 +51,23 @@ useSeoMeta({
     <UHeader>
       <template #left>
         <NuxtLink to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
+          <img :src="logoUrl" class="w-auto h-12 shrink-0" />
         </NuxtLink>
+      </template>
 
-        <TemplateMenu />
+      <UNavigationMenu :items="items"/>
+
+      <template #body>
+        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5"/>
       </template>
 
       <template #right>
         <UColorModeButton />
 
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
           target="_blank"
-          icon="i-simple-icons-github"
+          icon="i-simple-icons-linkedin"
           aria-label="GitHub"
           color="neutral"
           variant="ghost"
@@ -54,20 +79,20 @@ useSeoMeta({
       <NuxtPage />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <USeparator />
 
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          Built by José Amarista • © {{ new Date().getFullYear() }}
         </p>
       </template>
 
       <template #right>
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
           target="_blank"
-          icon="i-simple-icons-github"
+          icon="i-simple-icons-linkedin"
           aria-label="GitHub"
           color="neutral"
           variant="ghost"

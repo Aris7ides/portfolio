@@ -48,56 +48,60 @@ const { logoUrl } = useLogo();
 
 <template>
   <UApp>
-    <UHeader>
-      <template #left>
-        <NuxtLink to="/">
-          <img :src="logoUrl" class="w-auto h-12 shrink-0" />
-        </NuxtLink>
-      </template>
-
-      <UNavigationMenu :items="items"/>
-
-      <template #body>
-        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5"/>
-      </template>
-
-      <template #right>
-        <UColorModeButton />
-
-        <UButton
-          to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
-          target="_blank"
-          icon="i-simple-icons-linkedin"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UHeader>
-
-    <UMain>
-      <NuxtPage />
-    </UMain>
-
-    <USeparator />
-
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Built by José Amarista • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
-
-      <template #right>
-        <UButton
-          to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
-          target="_blank"
-          icon="i-simple-icons-linkedin"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
+    <div class="block lg:flex justify-center items-center">
+      <div class="lg:max-w-4/5 xl:max-w-3/4">
+        <UHeader>
+          <template #left>
+            <NuxtLink to="/">
+              <img :src="logoUrl" class="w-auto h-12 shrink-0" />
+            </NuxtLink>
+          </template>
+    
+          <UNavigationMenu :items="items"/>
+    
+          <template #body>
+            <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5"/>
+          </template>
+    
+          <template #right>
+            <UColorModeButton />
+    
+            <UButton
+              to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
+              target="_blank"
+              icon="i-simple-icons-linkedin"
+              aria-label="GitHub"
+              color="neutral"
+              variant="ghost"
+            />
+          </template>
+        </UHeader>
+    
+        <UMain>
+          <NuxtPage />
+        </UMain>
+    
+        <USeparator />
+    
+        <UFooter>
+          <template #left>
+            <p class="text-sm text-muted">
+              Built by José Amarista • © {{ new Date().getFullYear() }}
+            </p>
+          </template>
+    
+          <template #right>
+            <UButton
+              to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
+              target="_blank"
+              icon="i-simple-icons-linkedin"
+              aria-label="GitHub"
+              color="neutral"
+              variant="ghost"
+            />
+          </template>
+        </UFooter>
+      </div>
+    </div>
   </UApp>
 </template>

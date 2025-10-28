@@ -14,8 +14,8 @@ useHead({
   }
 })
 
-const title = 'Jaamaristam'
-const description = 'Portfolio by jaamaristam@gmail.com. Software Inginner.'
+const title = 'José Amarista - Portfolio'
+const description = 'Portfolio by José Amarista. Software Inginner.'
 
 useSeoMeta({
   title,

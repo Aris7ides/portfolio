@@ -2,93 +2,212 @@
   <div>
     <UPageHero
       title="José Aristides Amarista Marrón"
-      description="Ingeniero de Software"
-      :links="[{
-        label: 'Contactar',
-        to: 'https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/',
-        target: '_blank',
-        icon: 'i-simple-icons-linkedin',
-        size: 'xl',
-        color: 'neutral',
-        variant: 'subtle'
-      }]"
-    />
-
-    <UPageLogos
-      title="Frontend"
-      :items="[
-        'logos-javascript',
-        'logos-typescript-icon',
-        'logos-vue',
-        'logos-nuxt-icon',
-        'logos-react',
-        'logos-nextjs-icon',
-      ]"
-    />
-
-    <UPageLogos
-      title="Backend"
-      :items="[
-        'logos-php',
-        'logos-laravel',
-        'logos-symfony',
-        'logos-nodejs',
-        'logos-mysql',
-        'logos-postgresql',
-        'logos-python',
-        'logos-django-icon',
-        'logos-git',
-      ]"
-    />
-  <UPageSection
-    id="proyects"
-    title="Algunos de mis proyectos"
-    description=""
-  >
-    <UBlogPosts>
-      <UBlogPost
-        v-for="(post, index) in posts"
-        :key="index"
-        v-bind="post"
-      />
-    </UBlogPosts>
-  </UPageSection>
-
-    <UPageSection>
-      <UPageCTA
-        title="Ready to build your next Nuxt app?"
-        description="Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today."
-        variant="subtle"
-        :links="[{
-          label: 'Start building',
-          to: 'https://ui4.nuxt.com/docs/getting-started/installation/nuxt',
-          target: '_blank',
-          trailingIcon: 'i-lucide-arrow-right',
-          color: 'neutral'
-        }, {
-          label: 'View on GitHub',
-          to: 'https://github.com/nuxt-ui-templates/starter',
-          target: '_blank',
-          icon: 'i-simple-icons-github',
+      headline="Ingeniero de Software"
+      description="Desarrollador Full Stack con experiencia en múltiples tecnologías y frameworks. Apasionado por crear soluciones eficientes y escalables."
+      :links="[
+        {
+          label: 'joseamaristam@gmail.com',
+          to: '',
+          trailingIcon: 'i-lucide-copy',
+          size: 'xl',
           color: 'neutral',
-          variant: 'outline'
-        }]"
+          variant: 'subtle',
+          onClick: copyText,
+          class: 'cursor-pointer'
+        },
+        {
+          to: 'https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/',
+          target: '_blank',
+          icon: 'i-simple-icons-linkedin',
+          size: 'xl',
+          color: 'neutral',
+          variant: 'subtle'
+        },
+      ]"
+    />
+
+    <UPageSection
+      id="proyects"
+      title="Mis proyectos"
+      description=""
+    >
+      <UBlogPosts>
+        <UBlogPost
+          v-for="(post, index) in posts"
+          :key="index"
+          v-bind="post"
+        />
+      </UBlogPosts>
+    </UPageSection>
+
+    <UPageSection
+      id="proyects"
+      title="Tecnologías"
+    >
+      <UPageLogos
+        :ui="{logos: 'm-0'}"
+        :items="[
+          'logos-javascript',
+          'logos-typescript-icon',
+          'logos-vue',
+          'logos-react',
+        ]"
+      />
+      <UPageLogos
+        :ui="{logos: 'm-0'}"
+        :items="[
+          'logos-nuxt-icon',
+          'logos-nextjs-icon',
+          'logos-laravel',
+          'logos-symfony',
+        ]"
+      />
+      <UPageLogos
+        :ui="{logos: 'm-0'}"
+        :items="[
+          'logos-php',
+          'logos-nodejs',
+          'logos-python',
+          'logos-fastapi-icon',
+        ]"
+      />
+      <UPageLogos
+        :ui="{logos: 'm-0'}"
+        :items="[
+          'logos-tailwindcss-icon',
+          'logos-postgresql',
+          'logos-mysql',
+          'logos-git',
+        ]"
       />
     </UPageSection>
   </div>
 </template>
 
 <script setup>
+const copyText = async() => {
+  await navigator.clipboard.writeText('joseamaristam@gmail.com')
+};
+
 const posts = ref([
   {
-    title: 'Actaldia',
-    description: 'Plataforma para gestionar reuniones y conovocar asistentes.',
-    image: '/actaldia1.png',
-    to:"https://actaldia.com/admin/",
-    target:"_blank",
+    title: 'Lector y Firma de PDFs',
+    description: 'Aplicación móvil para firmar electrónicamente documentos PDF desde el dispositivo.',
+    image: '/pdf1.png',
+    to:"/proyects/movil-pdf-sing",
     badge: {
-      label: 'Desarrollo total',
-      color: 'success'
+      label: 'Aplicación movil',
+      color: 'info'
+    },
+    authors: [
+      {
+        name: 'NodeJS',
+        avatar: {
+          icon: 'logos-nodejs',
+          alt: 'NodeJS'
+        },
+      },
+      {
+        name: 'React Native',
+        avatar: {
+          icon: 'logos-react',
+          alt: 'React Native'
+        },
+      },
+      {
+        name: 'TypeScript',
+        avatar: {
+          icon: 'logos-typescript-icon',
+          alt: 'TypeScript'
+        },
+      },
+      {
+        name: 'SQLite',
+        avatar: {
+          icon: 'logos-sqlite',
+          alt: 'SQLite'
+        },
+      },
+    ]
+  },
+  {
+    title: 'Control de Almacén',
+    description: 'Crea y gestiona artículos, proveedores y clientes, gestiona albaranes y controla el stock.',
+    image: '/almacen1.png',
+    to:"/proyects/web-almacen",
+    badge: {
+      label: 'Aplicación web',
+      color: 'info'
+    },
+    authors: [
+      {
+        name: 'VueJs',
+        avatar: {
+          icon: 'logos-vue',
+          alt: 'VueJs'
+        },
+      },
+      {
+        name: 'TypeScript',
+        avatar: {
+          icon: 'logos-typescript-icon',
+          alt: 'TypeScript'
+        },
+      },
+      {
+        name: 'Python',
+        avatar: {
+          icon: 'logos-python',
+          alt: 'Python'
+        },
+      },
+      {
+        name: 'FastAPI',
+        avatar: {
+          icon: 'logos-fastapi-icon',
+          alt: 'FastAPI'
+        },
+      },
+    ]
+  },
+  {
+    title: 'TPV',
+    description: 'En conjunto con la aplicación de control de almacén, un sistema de TPV para gestionar ventas e imprimir tickets.',
+    image: '/tpv1.jpg',
+    to:"/proyects/desktop-tpv",
+    badge: {
+      label: 'Aplicación de escritorio',
+      color: 'info'
+    },
+    authors: [
+      {
+        avatar: {
+          icon: 'logos-vue',
+          alt: 'VueJs'
+        },
+      },
+      {
+        avatar: {
+          icon: 'logos-tauri',
+          alt: 'Tauri'
+        },
+      },
+      {
+        avatar: {
+          icon: 'logos-rust',
+          alt: 'Rust'
+        },
+      },
+    ]
+  },
+  {
+    title: 'Gestor de Reuniones',
+    description: 'Crea reuniones, envía invitaciones, realiza votaciones y obtén un resumen.',
+    image: '/actaldia1.png',
+    to:"/proyects/web-reuniones",
+    badge: {
+      label: 'Aplicación web',
+      color: 'info'
     },
     authors: [
       {
@@ -122,107 +241,13 @@ const posts = ref([
     ]
   },
   {
-    title: 'Sistema de Almacén',
-    description: 'Plataforma web para la gestión de artículos, compras, ventas, stock, albaranes, devoluciones y demás.',
-    image: '/almacen1.png',
-    to:"https://macau.servicios-empresa.com",
-    target:"_blank",
-    badge: {
-      label: 'Desarrollo total',
-      color: 'success'
-    },
-    authors: [
-      {
-        name: 'VueJs',
-        avatar: {
-          icon: 'logos-vue',
-          alt: 'VueJs'
-        },
-      },
-      {
-        name: 'TypeScript',
-        avatar: {
-          icon: 'logos-typescript-icon',
-          alt: 'TypeScript'
-        },
-      },
-      {
-        name: 'ASP',
-        avatar: {
-          icon: 'vscode-icons:file-type-asp',
-          alt: 'ASP'
-        },
-      },
-    ]
-  },
-  {
-    title: 'Servicio de Verifactu',
-    description: 'Servicio web para el envio de facturas a hacienda cumpliendo con la ley del verifactu.',
-    image: '/verifactu_logo.jpg',
-    badge: {
-      label: 'Desarrollo total',
-      color: 'success'
-    },
-    authors: [
-      {
-        name: 'C#',
-        avatar: {
-          icon: 'logos-c-sharp',
-          alt: 'C#'
-        },
-      },
-      {
-        name: '.NET',
-        avatar: {
-          icon: 'logos-dotnet',
-          alt: '.NET'
-        },
-      },
-    ]
-  },
-  {
-    title: 'eFacturando',
-    description: 'Plataforma web para gestionar facturas enlazado al verifactu.',
-    image: '/efacturando1.jpg',
-    to:"https://efacturando.es",
-    target:"_blank",
-    badge: {
-      label: 'Desarrollo parcial',
-      color: 'info'
-    },
-    authors: [
-      {
-        name: 'VueJs',
-        avatar: {
-          icon: 'logos-vue',
-          alt: 'VueJs'
-        },
-      },
-      {
-        name: 'JavaScript',
-        avatar: {
-          icon: 'logos-javascript',
-          alt: 'JavaScript'
-        },
-      },
-      {
-        name: 'ASP',
-        avatar: {
-          icon: 'vscode-icons:file-type-asp',
-          alt: 'ASP'
-        },
-      },
-    ]
-  },
-  {
-    title: 'TransFlowIA',
-    description: 'Plataforma web para la gestión de ordenes de transporte usando IA.',
+    title: 'Gestor de Ordenes IA',
+    description: 'Administra de ordenes, premisas y clientes para una empresa de transporte de contenedores.',
     image: '/transflow1.jpg',
-    to:"https://transporte.servicios-empresa.com",
-    target:"_blank",
+    to:"/proyects/web-ordenes-ia",
     badge: {
-      label: 'Desarrollo total',
-      color: 'success'
+      label: 'Aplicación web',
+      color: 'info'
     },
     authors: [
       {
@@ -256,15 +281,57 @@ const posts = ref([
     ]
   },
   {
-    title: 'Sistema de TPV',
-    description: 'Aplicación de TPV enlazada a almacén para gestión de productos y stock. Desarrollada con Delphi 12.',
-    image: '/tpv1.jpg',
+    title: 'Servicio Verifactu',
+    description: 'API RESTful para la gestión de facturas electrónicas según la normativa española.',
+    image: '/verifactu_logo.jpg',
+    to:'/proyects/api-verifactu',
     badge: {
-      label: 'Desarrollo total',
-      color: 'success'
+      label: 'API RESTful',
+      color: 'info'
     },
     authors: [
       {
+        name: 'C#',
+        avatar: {
+          icon: 'logos-c-sharp',
+          alt: 'C#'
+        },
+      },
+      {
+        name: '.NET',
+        avatar: {
+          icon: 'logos-dotnet',
+          alt: '.NET'
+        },
+      },
+    ]
+  },
+  {
+    title: 'Administración de Facturas',
+    description: 'Plataforma web para gestionar facturas enlazado al verifactu.',
+    image: '/efacturando1.jpg',
+    to:"/proyects/web-facturas",
+    badge: {
+      label: 'Aplicación web',
+      color: 'info'
+    },
+    authors: [
+      {
+        name: 'VueJs',
+        avatar: {
+          icon: 'logos-vue',
+          alt: 'VueJs'
+        },
+      },
+      {
+        name: 'JavaScript',
+        avatar: {
+          icon: 'logos-javascript',
+          alt: 'JavaScript'
+        },
+      },
+      {
+        name: 'ASP',
         avatar: {
           icon: 'vscode-icons:file-type-asp',
           alt: 'ASP'
@@ -274,12 +341,11 @@ const posts = ref([
   },
   {
     title: 'Plataforma Ever-si',
-    description: 'Gestor documental web para la seguridad industrial.',
+    description: 'Gestor documental para el mantenimiento de instalaciones segun normativa vigente.',
     image: '/eversi1.png',
-    to:"https://ever-si.es/",
-    target:"_blank",
+    to:"/proyects/web-ever-si",
     badge: {
-      label: 'Desarrollo parcial',
+      label: 'Aplicación web',
       color: 'info'
     },
     authors: [

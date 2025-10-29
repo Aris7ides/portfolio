@@ -2,6 +2,8 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { useLogo } from '@/composables/useLogo';
 
+const email = ref<string>('joseamaristam@gmail.com')
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -31,34 +33,44 @@ const route = useRoute()
 
 const items = computed<NavigationMenuItem[]>(() => [{
   label: 'Home',
+  icon: 'i-heroicons-home-solid',
   to: '/',
   active: route.path.toString() === '/'
 }, {
-  label: 'About',
+  label: 'About me',
+  icon: 'i-heroicons-user-solid',
   to: '/about',
   active: route.path.startsWith('/about')
 }, {
-  label: 'Proyects',
+  label: 'My proyects',
+  icon: 'i-heroicons-briefcase-solid',
   to: '/proyects',
   active: route.path.startsWith('/proyects')
 }])
 
 const { logoUrl } = useLogo();
+
+const copyText = async() => {
+  await navigator.clipboard.writeText(email.value)
+};
 </script>
 
 <template>
   <UApp>
-    <div class="block lg:flex justify-center items-center">
-      <div class="lg:max-w-4/5 xl:max-w-3/4">
-        <UHeader>
+    <div class="block xl:flex justify-center items-center bg-gray-100">
+      <div class="xl:w-3/4">
+        <UHeader
+         :ui="{root: 'xl:rounded-full xl:border xl:mt-2'}">
           <template #left>
-            <NuxtLink to="/">
+            <NuxtLink to="/" class="hover:scale-110">
               <img :src="logoUrl" class="w-auto h-12 shrink-0" />
             </NuxtLink>
           </template>
     
+          <!-- Escritorio menu -->
           <UNavigationMenu :items="items"/>
-    
+          
+          <!-- Mobile menu -->
           <template #body>
             <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5"/>
           </template>
@@ -77,28 +89,50 @@ const { logoUrl } = useLogo();
           </template>
         </UHeader>
     
-        <UMain>
-          <NuxtPage />
+        <UMain class="xl:border xl:rounded-4xl xl:border-muted xl:my-2 bg-white">
+          <div>
+            <NuxtPage />
+          </div>
         </UMain>
     
-        <USeparator />
+        <USeparator class="xl:hidden" />
     
-        <UFooter>
+        <UFooter
+          :ui="{root: 'xl:rounded-full xl:border xl:border-muted xl:mb-2 bg-white'}"
+        >
           <template #left>
-            <p class="text-sm text-muted">
-              Built by José Amarista • © {{ new Date().getFullYear() }}
-            </p>
+            <div>
+              <p class="text-sm text-muted">
+                Built by José Amarista • © {{ new Date().getFullYear() }}
+              </p>
+            </div>
+          </template>
+
+          <template #default>
+            <div>
+              <UButton
+                :label="email"
+                icon="i-lucide-copy"
+                class="cursor-pointer"
+                aria-label="Copy Email"
+                color="neutral"
+                variant="ghost"
+                @click="copyText"
+              />
+            </div>
           </template>
     
           <template #right>
-            <UButton
-              to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
-              target="_blank"
-              icon="i-simple-icons-linkedin"
-              aria-label="GitHub"
-              color="neutral"
-              variant="ghost"
-            />
+            <div>
+              <UButton
+                to="https://www.linkedin.com/in/jose-aristides-amarista-marron-99b018246/"
+                target="_blank"
+                icon="i-simple-icons-linkedin"
+                aria-label="LinkedIn"
+                color="neutral"
+                variant="ghost"
+              />
+            </div>
           </template>
         </UFooter>
       </div>

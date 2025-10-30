@@ -57,7 +57,7 @@ const copyText = async() => {
 
 <template>
   <UApp>
-    <div class="block xl:flex justify-center items-center bg-gray-100">
+    <div class="block xl:flex justify-center items-center bg-gray-100 dark:bg-accented">
       <div class="xl:w-3/4">
         <UHeader
          :ui="{root: 'xl:rounded-full xl:border xl:mt-2'}">
@@ -89,7 +89,7 @@ const copyText = async() => {
           </template>
         </UHeader>
     
-        <UMain class="xl:border xl:rounded-4xl xl:border-muted xl:my-2 bg-white">
+        <UMain class="xl:border xl:rounded-4xl xl:border-muted xl:my-2 bg-white dark:bg-default">
           <div>
             <NuxtPage />
           </div>
@@ -98,7 +98,7 @@ const copyText = async() => {
         <USeparator class="xl:hidden" />
     
         <UFooter
-          :ui="{root: 'xl:rounded-full xl:border xl:border-muted xl:mb-2 bg-white'}"
+          :ui="{root: 'xl:rounded-full xl:border xl:border-muted xl:mb-2 bg-white dark:bg-default'}"
         >
           <template #left>
             <div>

@@ -32,19 +32,19 @@ useSeoMeta({
 const route = useRoute()
 
 const items = computed<NavigationMenuItem[]>(() => [{
-  label: 'Home',
+  label: 'Inicio',
   icon: 'i-heroicons-home-solid',
   to: '/',
   active: route.path.toString() === '/'
 }, {
-  label: 'About me',
+  label: 'Sobre mi',
   icon: 'i-heroicons-user-solid',
   to: '/about',
   active: route.path.startsWith('/about')
 }, {
-  label: 'My proyects',
+  label: 'Mis proyectos',
   icon: 'i-heroicons-briefcase-solid',
-  to: '/proyects',
+  to: '/#proyects',
   active: route.path.startsWith('/proyects')
 }])
 

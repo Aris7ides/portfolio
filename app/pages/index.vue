@@ -26,6 +26,8 @@
       ]"
     />
 
+    <USeparator />
+
     <UPageSection
       id="proyects"
       title="Mis proyectos"
@@ -39,6 +41,8 @@
         />
       </UBlogPosts>
     </UPageSection>
+
+    <USeparator />
 
     <UPageSection
       id="proyects"
